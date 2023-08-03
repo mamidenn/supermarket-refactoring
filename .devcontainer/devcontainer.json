@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+{
+  "name": "C# (.NET)",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:0-7.0",
+  "postCreateCommand": "dotnet restore",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vsliveshare.vsliveshare",
+        "pucelle.run-on-save",
+        "usernamehw.errorlens",
+        "ms-dotnettools.csdevkit"
+      ],
+      "settings": {
+        "csharp.suppressBuildAssetsNotification": true,
+        "dotnet.defaultSolution": "supermarket-refactoring.sln",
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "explorer.excludeGitIgnore": true,
+        "explorer.sortOrder": "filesFirst",
+        "liveshare.allowGuestDebugControl": true,
+        "liveshare.allowGuestTaskControl": true,
+        "liveshare.languages.allowGuestCommandControl": true,
+        "omnisharp.enableImportCompletion": true,
+        "omnisharp.enableRoslynAnalyzers": true,
+        "omnisharp.organizeImportsOnFormat": true,
+        "runOnSave.commands": [
+          {
+            "match": ".*\\.(cs|csproj)$",
+            "command": "dotnet test --nologo --no-restore && git commit -am TCR || git reset --hard",
+            "runIn": "terminal"
+          }
+        ]
+      }
+    }
+  }
+}
